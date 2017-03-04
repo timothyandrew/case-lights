@@ -45,9 +45,9 @@ void setColor(CHSV color) {
 }
 
 void loop() {
-  int startColor = 160;
-  int saturation = 50;
-  int value = 255;
+  int startColor = 140;
+  int saturation = 100;
+  int value = 200;
 
   setColor(CHSV(startColor, saturation, value));
 }
