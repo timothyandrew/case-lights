@@ -36,14 +36,22 @@ void setColorSpectrumStartingAt(int color, int saturation, int value) {
   flush();
 }
 
+void setColor(int color, int saturation, int value) {
+  for(int i=0; i<NUM_LEDS; i++) {
+    leds[i] = CHSV(color,saturation,value);
+  }
+
+  flush();
+}
+
 void loop() {
   int startColor = 0;
   int saturation = 255;
   int value = 255;
 
   while(startColor < 255) {
-    setColorSpectrumStartingAt(startColor, saturation, value);
-    startColor = nextColor(startColor);
+    setColor(startColor, saturation, value);
+    startColor++;
     delay(80);
   }
 }
