@@ -51,12 +51,14 @@ void loop() {
 
   for(int i=0; i<NUM_LEDS; i++) {
     leds[i] = CHSV(startColor, saturation, value);
+    leds[NUM_LEDS - 1 - i] = CHSV(255 - startColor, saturation, value);
     flush();
 
     startColor = nextHue(startColor);
     delay(80);
 
     leds[i] = CHSV(0,0,0);
+    leds[NUM_LEDS - 1 - i] = CHSV(0,0,0);
     flush();
   }
 }
