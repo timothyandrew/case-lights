@@ -45,15 +45,18 @@ void setColor(CHSV color) {
 }
 
 void loop() {
-  return clearAll();
-
   int startColor = 0;
   int saturation = 255;
   int value = 255;
 
-  while(startColor < 255) {
-    setColor(CHSV(startColor, saturation, value));
-    startColor++;
+  for(int i=0; i<NUM_LEDS; i++) {
+    leds[i] = CHSV(startColor, saturation, value);
+    flush();
+
+    startColor = nextHue(startColor);
     delay(80);
+
+    leds[i] = CHSV(0,0,0);
+    flush();
   }
 }
