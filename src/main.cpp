@@ -38,7 +38,7 @@ void setColorSpectrumStartingAt(int color, int saturation, int value) {
 
 void loop() {
   int startColor = 0;
-  int saturation = 255;
+  int saturation = 120;
   int value = 255;
 
   while(startColor < 255) {
