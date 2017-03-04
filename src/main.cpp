@@ -11,7 +11,7 @@ void setup() {
   FastLED.addLeds<LED_TYPE, DATA_PIN, COLOR_ORDER>(leds, NUM_LEDS);
 }
 
-int nextColor(int color) {
+int nextHue(int color) {
   return (color + (255/NUM_LEDS)) % 255;
 }
 
@@ -27,18 +27,18 @@ void clearAll() {
   flush();
 }
 
-void setColorSpectrumStartingAt(int color, int saturation, int value) {
+void setColorSpectrumStartingAt(CHSV color) {
   for(int i=0; i<NUM_LEDS; i++) {
-    leds[i] = CHSV(color,saturation,value);
-    color = nextColor(color);
+    leds[i] = color;
+    color = CHSV(nextHue(color.hue), color.sat, color.val);
   }
 
   flush();
 }
 
-void setColor(int color, int saturation, int value) {
+void setColor(CHSV color) {
   for(int i=0; i<NUM_LEDS; i++) {
-    leds[i] = CHSV(color,saturation,value);
+    leds[i] = color;
   }
 
   flush();
@@ -52,7 +52,7 @@ void loop() {
   int value = 255;
 
   while(startColor < 255) {
-    setColor(startColor, saturation, value);
+    setColor(CHSV(startColor, saturation, value));
     startColor++;
     delay(80);
   }
