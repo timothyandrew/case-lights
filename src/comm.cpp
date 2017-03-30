@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "styles.h"
 
-int lastInstruction = 'rgb';
+int lastInstruction;
 
 void ack() {
   Serial.write(2);
