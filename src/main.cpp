@@ -6,6 +6,7 @@
 #define LED_TYPE    WS2812B
 
 CRGB leds[NUM_LEDS];
+int startColor = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -46,6 +47,22 @@ void setColor(CHSV color) {
 }
 
 void loop() {
-  Serial.print("Hello world!");
-  delay(10);
+  int saturation = 255;
+  int value = 255;
+  String readString;
+
+
+  if(Serial.available()) {
+    delay(3); // Wait for buffer to fill
+
+    while(Serial.available() > 0) {
+      readString += Serial.read();
+    }
+
+    if(readString == "nextColor") {
+      startColor = startColor + 50 % 255;
+    }
+  }
+
+  setColor(CHSV(startColor, saturation, value));
 }
