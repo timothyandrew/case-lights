@@ -59,6 +59,9 @@ void loop() {
       readString += Serial.read();
     }
 
+    Serial.println("readString is: ")
+    Serial.println(readString)
+
     if(readString == "nextColor") {
       startColor = startColor + 50 % 255;
     }
