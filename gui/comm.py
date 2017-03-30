@@ -10,8 +10,8 @@ import time
 # - Every message sent from Python to Arduino is ACKed                              #
 #####################################################################################
 
-def waitForArduinoReady():
-    message = arduino.read()
+def waitForArduinoReady(conn):
+    message = conn.read()
     if message != '' and message[0] == getProtocolCode('arduinoReady'):
         pass
     else:
@@ -33,15 +33,14 @@ protocol = {
 def getProtocolCode(code):
     return protocol[code]
 
-def sendToArduino(operation):
-    arduino.write(getProtocolCode(operation))
-    response = arduino.read()
+def sendToArduino(conn, operation):
+    conn.write(getProtocolCode(operation))
+    response = conn.read()
     if not response == getProtocolCode("ACK"):
         raise ValueError("Arduino didn't ACK the request")
 
-def main():
-    sendToArduino('rgb')
+def setup():
+    conn = serial.Serial('COM4', 9600, timeout=1, write_timeout=1)
+    waitForArduinoReady(conn)
+    conn
 
-arduino = serial.Serial('COM4', 9600, timeout=1, write_timeout=1)
-waitForArduinoReady()
-main()
