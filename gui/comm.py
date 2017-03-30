@@ -42,5 +42,5 @@ def sendToArduino(conn, operation):
 def setup():
     conn = serial.Serial('COM4', 9600, timeout=1, write_timeout=1)
     waitForArduinoReady(conn)
-    conn
+    return conn
 

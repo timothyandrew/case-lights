@@ -7,6 +7,9 @@ from ui_case_lights import Ui_CaseLights
 from functools import partial
 
 from strategy.rgb import RGBStrategy
+from strategy.white import WhiteStrategy
+from strategy.pulse import PulseStrategy
+
 from util import log
 from worker import Worker
 import comm
@@ -22,6 +25,8 @@ class CaseLightsWindow(QMainWindow):
 
     def setupButtons(self):
         self.ui.rgbButton.clicked.connect(partial(self.startWorker, RGBStrategy))
+        self.ui.pulseButton.clicked.connect(partial(self.startWorker, PulseStrategy))
+        self.ui.whiteButton.clicked.connect(partial(self.startWorker, WhiteStrategy))
 
     def startWorker(self, strategy):
         worker = Worker()
