@@ -36,3 +36,7 @@ void white() {
 
   setColor(CHSV(color, saturation, value));
 }
+
+void clear() {
+  setColor(CHSV(0,0,0));
+}

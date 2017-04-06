@@ -27,7 +27,8 @@ protocol = {
     'white': chr(12),
 
     # Actions
-    'pause': chr(30)
+    'pause': chr(30),
+    'clear': chr(31)
 }
 
 def getProtocolCode(code):

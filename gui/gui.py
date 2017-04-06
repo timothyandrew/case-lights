@@ -27,6 +27,7 @@ class CaseLightsWindow(QMainWindow):
         self.ui.rgbButton.clicked.connect(partial(self.startWorker, RGBStrategy))
         self.ui.pulseButton.clicked.connect(partial(self.startWorker, PulseStrategy))
         self.ui.whiteButton.clicked.connect(partial(self.startWorker, WhiteStrategy))
+        self.ui.clearButton.clicked.connect(partial(self.startWorker, ClearStrategy))
 
     def startWorker(self, strategy):
         worker = Worker()

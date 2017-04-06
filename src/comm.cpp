@@ -21,6 +21,9 @@ void execInstruction(int code, bool firstRun) {
   case 30:
     // Pause; do nothing
     break;
+  case 31:
+    clear();
+    break;
   }
 }
 
