@@ -9,6 +9,7 @@ from functools import partial
 from strategy.rgb import RGBStrategy
 from strategy.white import WhiteStrategy
 from strategy.pulse import PulseStrategy
+from strategy.clear import ClearStrategy
 
 from util import log
 from worker import Worker
