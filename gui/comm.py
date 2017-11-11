@@ -41,7 +41,7 @@ def sendToArduino(conn, operation):
         raise ValueError("Arduino didn't ACK the request")
 
 def setup():
-    conn = serial.Serial('COM1', 9600, timeout=1, write_timeout=1)
+    conn = serial.Serial('COM4', 9600, timeout=1, write_timeout=1)
     waitForArduinoReady(conn)
     return conn
 
